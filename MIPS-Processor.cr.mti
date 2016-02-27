@@ -1,4 +1,11 @@
-C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/MainDecoder.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/MainDecoder.v
+C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALUDecoder
+
+Top level modules:
+	ALUDecoder
+
+} {} {}} C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/MainDecoder.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/MainDecoder.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module MainDecoder
 
