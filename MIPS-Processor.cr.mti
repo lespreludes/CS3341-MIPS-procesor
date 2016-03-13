@@ -1,4 +1,18 @@
-C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v
+C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/SignExtender.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/SignExtender.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module SignExtender
+
+Top level modules:
+	SignExtender
+
+} {} {}} C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoderTest.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoderTest.v
+Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
+-- Compiling module ALUDecoderTester
+
+Top level modules:
+	ALUDecoderTester
+
+} {} {}} C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v {1 {vlog -work work -stats=none C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/ALUDecoder.v
 Model Technology ModelSim PE Student Edition vlog 10.4a Compiler 2015.03 Apr  7 2015
 -- Compiling module ALUDecoder
 
