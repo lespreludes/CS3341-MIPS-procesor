@@ -1,8 +1,9 @@
-module MainALU(SrcA,SrcB,ALUControl,ALUResult);
+module MainALU(SrcA,SrcB,ALUControl,ALUResult,zero);
 	input [31:0] SrcA;
 	input [31:0] SrcB;
 	input [2:0] ALUControl;
 	
+	output zero;
 	output [31:0] ALUResult;
 	reg [31:0] ALUResult;
 
@@ -26,4 +27,6 @@ module MainALU(SrcA,SrcB,ALUControl,ALUResult);
 			3'b111: ALUResult = SrcA < SrcB;
 		endcase
 	end
+	
+	assign zero = ALUResult == 32'h00000000;
 endmodule
