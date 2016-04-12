@@ -24,7 +24,7 @@ readOut1Out = 0;
 readOut2Out = 0;
 instructionOut = 0;
 end else begin
-pcPlus4Out = pcPlus4In;
+pcPlus4Out = pcPlus4In; 
 readOut1Out = readOut1In;
 readOut2Out = readOut2In;
 instructionOut = instructionIn;
