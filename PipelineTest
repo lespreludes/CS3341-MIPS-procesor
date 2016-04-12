@@ -1,0 +1,60 @@
+module IFID(pcPlus4Out, instructionOut, pcPlus4In, instructionIn, clock, reset);
+input [31:0] pcPlus4In, instructionIn;
+input clock, reset;
+output reg [31:0] pcPlus4Out, instructionOut;
+always @ (posedge clock or negedge reset) begin
+if (~reset) begin
+pcPlus4Out = 0;
+instructionOut = 0;
+end else begin
+pcPlus4Out = pcPlus4In;
+instructionOut = instructionIn;
+end
+end
+endmodule
+module IDEX(pcPlus4Out, instructionOut, readOut1Out, readOut2Out, pcPlus4In, instructionIn,
+readOut1In, readOut2In, clock, reset);
+input [31:0] pcPlus4In, readOut1In, readOut2In, instructionIn;
+input clock, reset;
+output reg [31:0] pcPlus4Out, readOut1Out, readOut2Out, instructionOut;
+always @ (posedge clock or negedge reset) begin
+if (~reset) begin
+pcPlus4Out = 0;
+readOut1Out = 0;
+readOut2Out = 0;
+instructionOut = 0;
+end else begin
+pcPlus4Out = pcPlus4In;
+readOut1Out = readOut1In;
+readOut2Out = readOut2In;
+instructionOut = instructionIn;
+end
+end
+endmodule
+
+module Pipe(reset,clock,PipeWrte,PC_Plus4Out,Ins,InsOut,PC_Plus4In);
+ input [31:0] PC_Plus4In,Ins;
+ input clock,PipeWrte,reset;
+ output [31:0] InsOut, PC_Plus4Out;
+
+ reg [31:0] InsOut, PC_Plus4Out;
+
+ initial begin
+ InsOut = 0;
+ PC_Plus4Out = 0;
+ end
+
+ always@(posedge clock)
+ begin
+ if(reset)
+ begin
+ InsOut <= 0;
+ PC_Plus4Out <=0;
+ end
+ else if(PipeWrte)
+ begin
+ InsOut <= Ins;
+ PC_Plus4Out <= PC_Plus4In;
+ end
+ end
+endmodule 
