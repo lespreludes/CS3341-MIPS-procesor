@@ -1,5 +1,3 @@
-
-
 module Register_File(clk, rst, reg1, reg2, writereg, writedata, regwrite, out1, out2);
 
 
@@ -17,6 +15,10 @@ module Register_File(clk, rst, reg1, reg2, writereg, writedata, regwrite, out1, 
 	output [31:0] out2; 
 	
 	reg [31:0] registers[31:0]; //array of 32, 32 bit registers
+	
+	initial begin
+		$readmemh("C:/Users/Tyler/Documents/CS4341.002_Assignment6_TylerHagen/memory.txt", mem);
+	end
 	
 	assign out1 = registers[reg1]; 
 	assign out2 = registers[reg2];
