@@ -68,6 +68,6 @@ module SingleCycleProcessor(clock,reset);
 	/*Control*/
 	MainDecoder md(instruction[31:26],regWrite,regDst, 
 		ALUSrc,branch,memWrite,memToReg,ALUOp,jump);
-	ALUDecoder(ALUOp,instruction[5:0],ALUControl);
+	ALUDecoder ad(ALUOp,instruction[5:0],ALUControl);
 
 endmodule
