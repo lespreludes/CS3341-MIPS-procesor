@@ -1,4 +1,3 @@
-
 module Instruction_Memory(clk, rst, addr, instruct);
 
 	input clk, rst;
@@ -10,6 +9,12 @@ module Instruction_Memory(clk, rst, addr, instruct);
 	
 	
 	reg[31:0] mem[31:0]; //array of 32, 32 bit registers (our "memory")
+	
+	
+	
+	initial begin
+		$readmemh("C:/Users/Tyler/Documents/CS4341.002_Assignment6_TylerHagen/memory.txt", mem);
+	end
 	
 	always @(posedge clk) begin
 		instruct <= mem[addr / 4];
