@@ -1,0 +1,33 @@
+module pipline (output wrte[0:C], input ins [0:N])
+wire fetch[0:N]
+reg pipefetch[0:N]
+wire decode[0:A]
+reg pipedecode[0:A]
+wire exc[0:B]
+reg pipeexc[0:B]
+wire write[0:C]
+reg pipewrite[0:C]
+
+//Flip Flops
+//assign fetch in order for it to fetch i.e assign fetch = fetch code? Instruction Mem?
+always @(posedge clk) begin
+pipefetch <= fetch;
+end
+
+//assign decode in order for it to decode i.e decode=MainDecoder?
+always @(posedge clk)
+pipedecode <= decode
+end
+
+//assign exc in order for it to excute ecx = Register_File?
+always @(posedge clk)
+pipeexc <= exc
+end
+
+//assign write in order for it to write write = Data_Memory?
+always @(posedge clk)
+pipewrite <= write
+end
+
+
+//Add comments here
