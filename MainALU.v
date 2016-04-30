@@ -7,7 +7,7 @@ module MainALU(SrcA,SrcB,ALUControl,ALUResult,zero);
 	output [31:0] ALUResult;
 	reg [31:0] ALUResult;
 
-	always @(ALUControl) begin
+	always @(*) begin
 		case (ALUControl)
 			// A & B
 			3'b000: ALUResult = SrcA & SrcB;

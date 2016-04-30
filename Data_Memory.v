@@ -13,19 +13,19 @@ module Data_Memory(clk, rst, addr, writeData, readData, memWrite, memRead);
 	
 	
 	initial begin
-		$readmemh("C:/Users/Tyler/Documents/CS4341.002_Assignment6_TylerHagen/memory.txt", mem);
+		$readmemh("C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/tests/test2_data.mem", mem);
 	end
 	
 	always @ (*) begin //if inputs change, check if memRead is set and if so change output
 		case (memRead)
-			1'b1: readData = mem[(addr/4) - 32];
+			1'b1: readData = mem[(addr/4)];
 		endcase
 	end
 	
 	
 	always @ (posedge clk) begin
 		case (memWrite)
-			1'b1: mem[(addr / 4 ) - 32] <= writeData;
+			1'b1: mem[(addr / 4 )] <= writeData;
 		endcase
 	end
 	

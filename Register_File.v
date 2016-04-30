@@ -17,7 +17,7 @@ module Register_File(clk, rst, reg1, reg2, writereg, writedata, regwrite, out1, 
 	reg [31:0] registers[31:0]; //array of 32, 32 bit registers
 	
 	initial begin
-		$readmemh("C:/Users/Tyler/Documents/CS4341.002_Assignment6_TylerHagen/memory.txt", mem);
+		$readmemh("C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/tests/test2_reg.mem", registers);
 	end
 	
 	assign out1 = registers[reg1]; 

@@ -10,10 +10,10 @@ module SingleCycleProcessor(clock,reset);
 	reg [31:0] pc;
 	wire [31:0] newpc;
 	wire [31:0] noBranchAddr;
-	wire [27:0] jumpAddr;
 	wire [31:0] branchAddr;
 
-	wire [31:0] instruction;
+	wire [31:0] instrWire;
+	reg [31:0] instruction;
 	wire [4:0] writeRegister;
 	wire [31:0] writeData;
 	wire [31:0] data1, data2;
@@ -25,24 +25,35 @@ module SingleCycleProcessor(clock,reset);
 
 	wire [31:0] readData;
 
-	wire regDst, jump, branch, memRead,memToReg, memWrite,ALUSrc, regWrite;
+	wire regDst, jump, branch, memToReg, memWrite,ALUSrc, regWrite;
 	wire [1:0] ALUOp;
 	wire [2:0] ALUControl;
-	wire takeBranch;
 	
+	wire [31:0] intAddr;
 	
 	/*pc address calculation*/
-	always @(posedge clock)
-		pc = newpc;
-	
+	always @(posedge clock) begin
+		case (reset)
+			1'b0: pc = newpc;
+			1'b1: pc = 0;
+		endcase
+	end
+
+	always @(instrWire) begin
+		case (reset)
+			1'b1: instruction = instrWire;
+			1'b0: instruction = instrWire;
+		endcase
+	end
+
 	SimpleAdder noBranchAdder(pc,32'h00000004,noBranchAddr);
-	SimpleAdder branchAdder({extImm[29:0],2'b00},noBranchAddr,branchAddr);
-	Multiplexer branchMux(noBranchAddr,branchAddr,takeBranch,intAddr);
-	Multiplexer jumpMux(intAddr,{noBranchAddr[31:28],instruction[25:0],2'b00},jump,newpc);
+	SimpleAdder #(32) branchAdder({extImm[29:0],2'b00},noBranchAddr,branchAddr);
+	Multiplexer #(32) branchMux(noBranchAddr,branchAddr,branch&zero,intAddr);
+	Multiplexer #(32) jumpMux(intAddr,{noBranchAddr[31:28],instruction[25:0],2'b00},jump,newpc);
 	
 	
 	/*Instruction memory*/
-	Instruction_Memory im(clock, reset, pc, instruction);
+	Instruction_Memory im(clock, reset, pc, instrWire);
 
 
 	/*register file*/
@@ -56,18 +67,23 @@ module SingleCycleProcessor(clock,reset);
 	
 
 	/*ALU*/
-	Multiplexer ALUInpMux(data2,extImm,ALUSrc,ALUInpB);
+	Multiplexer #(32) ALUInpMux(data2,extImm,ALUSrc,ALUInpB);
 	MainALU ma(data1,ALUInpB,ALUControl,ALUResult,zero);
 
 
 	/*Data memory*/
-	Data_Memory dm(clock, reset, ALUResult, data2, readData, memWrite, memRead);
-	Multiplexer wrieDataMux(ALUResult,readData,memToReg,writeData);
+	Data_Memory dm(clock, reset, ALUResult, data2, readData, memWrite, memToReg);
+	Multiplexer #(32) writeDataMux(ALUResult,readData,memToReg,writeData);
 
 
 	/*Control*/
 	MainDecoder md(instruction[31:26],regWrite,regDst, 
 		ALUSrc,branch,memWrite,memToReg,ALUOp,jump);
 	ALUDecoder ad(ALUOp,instruction[5:0],ALUControl);
+
+	initial begin
+		pc = 32'h00000000;
+		instruction = 32'h00000000;
+	end
 
 endmodule
