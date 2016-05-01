@@ -13,9 +13,8 @@ module Instruction_Memory(clk, rst, addr, instruct);
 	
 	
 	initial begin
-		$readmemh("C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/tests/test2_instrs.mem", mem);
-	end
-	
+		$readmemh("C:/Users/Tyler/CS3341-MIPS-processor/tests/test2_instrs.mem" , mem);
+        end 
 	always @(*) begin
 		instruct <= mem[addr / 4];
 	end

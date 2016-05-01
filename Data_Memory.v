@@ -13,7 +13,7 @@ module Data_Memory(clk, rst, addr, writeData, readData, memWrite, memRead);
 	
 	
 	initial begin
-		$readmemh("C:/Users/Satsuki/Documents/UTD/2016Spring/CS4341/CS3341-MIPS-processor/tests/test2_data.mem", mem);
+		$readmemh("C:/Users/Tyler/CS3341-MIPS-processor/tests/test2_data.mem", mem);
 	end
 	
 	always @ (*) begin //if inputs change, check if memRead is set and if so change output
