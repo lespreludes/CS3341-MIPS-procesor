@@ -1,0 +1,18 @@
+In the first video, we test the operation of add, addi, lw, and sw.
+The instructions can be found in tests/test_instrs.mem.
+Initially, data memory contains 2 in memory 0, and 3 in location 4.
+The data are loaded in, added, and an immediate of 4 is added.
+To test the result, we first reset the processor.
+Then we allow it to run until all instrutions have excetuted.
+The result is stored in memory address 8.
+We show the contents of all three memory containers (instruction,
+data, and registers) before and after the program runs.
+
+In the second, we test the operation of branching and jump.
+Initially, the registers $t0, $t1, and $t2 are loaded with 16, 32, and 16.
+Then $t0 is checked for equivalence with $t1, and if they are equal, 32 is
+reported in data memory at location zero.  Otherwise, 16 is reported.
+Then $t0 is checked for equivalence with $t2.  Again, if they are equal,
+32 is reported in the second memory location.  If they are not equal, 16 is 
+reported.  Basically, the value of the memory location indicates whether 
+a branch occured.  The instructions run can be found in tests/test2_instr.mem
